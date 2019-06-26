@@ -3,3 +3,4 @@ xcode_project: CodingChallenge.xcodeproj
 xcode_scheme: CodingChallenge
 xcode_sdk: iphonesimulator12.2
 xcode_destination: xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
+
