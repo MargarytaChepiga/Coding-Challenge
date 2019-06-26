@@ -36,6 +36,12 @@ class CodingChallengeTests: XCTestCase {
         XCTAssertEqual(vc?.articles.count, 0, "searchResults should be empty before the data task runs")
 
     }
+    
+    func testFetchJSON() {
+        XCTAssertEqual(vc?.articles.count, 0, "searchResults should be empty before the data task runs")
+        vc.fetchJSON()
+        XCTAssertEqual(vc?.articles.count, 27, "searchResults should be empty before the data task runs")
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
