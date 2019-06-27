@@ -87,9 +87,10 @@ class ArticlesFeedViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailViewController()
+        let vc =  DetailViewController()
         vc.selectedArticle = articles[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
+        
     }
 
 

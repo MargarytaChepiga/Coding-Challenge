@@ -7,63 +7,67 @@
 //
 
 import UIKit
-import WebKit
 
 class DetailViewController: UIViewController {
 
-    var webView: WKWebView!
     var selectedArticle: Article?
     
+    var titleLabel: UILabel!
+    var textView: UITextView!
+    
     override func loadView() {
-        webView = WKWebView()
-        view = webView
+        view = UIView()
+        view.backgroundColor = .white
+        
+        titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.systemFont(ofSize: 18)
+        view.addSubview(titleLabel)
+        
+        textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.textAlignment = .left
+        textView.font = UIFont.systemFont(ofSize: 16)
+        view.addSubview(textView)
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+
+            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            textView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
+            textView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+        ])
+        
+        // for testing purposes
+        // titleLabel.backgroundColor = UIColor.red
+        // textView.backgroundColor = UIColor.green
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // unwrapp the detailItem if it has a value
         guard let selectedArticle = selectedArticle else { return }
         
-        let html = """
-        <html>
-        <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <style>
-                    body {
-                        font-size: 150%;
-        background-color: #F8F9F9;
-                    }
-                    h4 {
-                        text-align: center;
-                    }
-                    div {
-                        margin-left: 20px;
-                        margin-right: 20px;
-                        padding: 5px 10px 5px 10px;
-                        border: 1px solid #ABB2B9  ;
-                        background-color: white;
-                        box-shadow: 10px 10px #D6DBDF;
-                    }
+        titleLabel.text = selectedArticle.title
+        textView.text = selectedArticle.content
         
-            </style>
-        </head>
-        <body>
-            <div>
-                <h4>\(selectedArticle.title)</h4>
-                <hr>
-                <p>
-                    \(selectedArticle.content)
-                </p>
-            </div>
-        </body>
-        </html>
-        """
-        
-        webView.loadHTMLString(html, baseURL: nil)
-        
+        print(selectedArticle.content)
+       
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnTap = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
+    }
 
 }
