@@ -42,9 +42,8 @@ class ArticlesFeedViewController: UITableViewController {
         // resetting the image to avoid image appearance in cells that shoundn't
         // have the image
         cell.imageView?.image = nil
-        // TODO:
-        // DO i need self here?
-        let article = self.articles[indexPath.row]
+       
+        let article = articles[indexPath.row]
         cell.textLabel?.text = article.title
         
         if let url = article.thumbnailUrl,
