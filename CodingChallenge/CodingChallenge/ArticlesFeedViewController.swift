@@ -10,7 +10,7 @@ import UIKit
 
 class ArticlesFeedViewController: UITableViewController {
     // to store parsed data
-    var articles = [ArticleInfo]()
+    var articles = [Article]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,23 +45,11 @@ class ArticlesFeedViewController: UITableViewController {
         // TODO:
         // DO i need self here?
         let article = self.articles[indexPath.row]
-        cell.textLabel?.text = article.data.title
-        // Check whether a thumbnail contains an image url
-        if article.data.thumbnail.contains("https") {
-            print(article.data.thumbnail)
-            // TODO:
-            // DO I need to create an extra variable here?
-            let thumbUrl = article.data.thumbnail
-            // If it does, create a URL object from the remote image url string
-            if let url = URL(string: thumbUrl) {
-                // TODO:
-                // Why did you use try?
-                
-                // create data object using which we can create image object
-                if let data = try? Data(contentsOf: url) {
-                    cell.imageView?.image = UIImage(data: data)
-                }
-            }
+        cell.textLabel?.text = article.title
+        
+        if let url = article.thumbnailUrl,
+            let data = try? Data(contentsOf: url) {
+            cell.imageView?.image = UIImage(data: data)
         }
         
         return cell
@@ -69,34 +57,27 @@ class ArticlesFeedViewController: UITableViewController {
     
     @objc func fetchJSON() {
         
-        let urlString = "https://www.reddit.com/r/swift.json"
+        guard let url = URL(string: DATA_SOURCE) else {
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
+            return
+        }
        
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                parse(json: data)
-            } else {
-                // show error on the main thread
-                performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
-            }
+        if let data = try? Data(contentsOf: url) {
+            parse(json: data)
         } else {
             // show error on the main thread
             performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
     }
     
-    
-    
     func parse(json: Data) {
         let decoder = JSONDecoder()
        
-        if let jsonArticles = try? decoder.decode(Articles.self, from: json) {
+        guard let redditPayload = try? decoder.decode(RedditPayload.self, from: json) else { return }
             
-            articles = jsonArticles.data.children
-            print(articles)
-            print(articles.count)
-            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
-            
-        }
+        articles = Article.parseArticles(from: redditPayload)
+        print("Parsed downloaded payload into \(articles.count) items: \n\(articles)")
+        tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
     }
     
     @objc func showError() {

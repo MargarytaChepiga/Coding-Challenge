@@ -12,7 +12,7 @@ import WebKit
 class DetailViewController: UIViewController {
 
     var webView: WKWebView!
-    var selectedArticle: ArticleInfo?
+    var selectedArticle: Article?
     
     override func loadView() {
         webView = WKWebView()
@@ -50,10 +50,10 @@ class DetailViewController: UIViewController {
         </head>
         <body>
             <div>
-                <h4>\(selectedArticle.data.title)</h4>
+                <h4>\(selectedArticle.title)</h4>
                 <hr>
                 <p>
-                    \(selectedArticle.data.selftext)
+                    \(selectedArticle.content)
                 </p>
             </div>
         </body>
