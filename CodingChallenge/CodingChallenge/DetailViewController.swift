@@ -39,7 +39,6 @@ class DetailViewController: UIViewController {
 
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             textView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
-            //textView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor)
             textView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
         ])
