@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class ArticlesFeedViewController: UITableViewController {
     // to store parsed data
     var articles = [ArticleInfo]()
     
