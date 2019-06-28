@@ -18,12 +18,12 @@
 		F077B95922C4448600B55B03 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077B95822C4448600B55B03 /* Article.swift */; };
 		F077B95A22C4448600B55B03 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077B95822C4448600B55B03 /* Article.swift */; };
 		F077B95B22C4459C00B55B03 /* RedditPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077B93D22C27B5B00B55B03 /* RedditPayload.swift */; };
-		F077B95C22C446A700B55B03 /* ArticlesFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077B92B22C1DBE100B55B03 /* ArticlesFeedViewController.swift */; };
 		F077B95E22C4472500B55B03 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077B95D22C4472500B55B03 /* Config.swift */; };
 		F077B95F22C4472500B55B03 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077B95D22C4472500B55B03 /* Config.swift */; };
 		F077B96022C448A200B55B03 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077B94322C2AC6C00B55B03 /* DetailViewController.swift */; };
 		F077B96122C44A2C00B55B03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077B92D22C1DBE100B55B03 /* Main.storyboard */; };
-		F077B96422C44C7700B55B03 /* ArticleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077B96222C44C7700B55B03 /* ArticleModelTests.swift */; };
+		F0D9229922C58ADA00F73050 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D9229822C58ADA00F73050 /* Network.swift */; };
+		F0D9229A22C58ADA00F73050 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D9229822C58ADA00F73050 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 		F077B94D22C3EE6500B55B03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F077B95822C4448600B55B03 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		F077B95D22C4472500B55B03 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		F077B96222C44C7700B55B03 /* ArticleModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModelTests.swift; sourceTree = "<group>"; };
+		F0D9229822C58ADA00F73050 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +96,7 @@
 				F077B95722C43D9C00B55B03 /* Models */,
 				F077B92922C1DBE100B55B03 /* AppDelegate.swift */,
 				F077B92B22C1DBE100B55B03 /* ArticlesFeedViewController.swift */,
+				F0D9229822C58ADA00F73050 /* Network.swift */,
 				F077B94322C2AC6C00B55B03 /* DetailViewController.swift */,
 				F077B92D22C1DBE100B55B03 /* Main.storyboard */,
 				F077B93022C1DBE500B55B03 /* Assets.xcassets */,
@@ -109,7 +110,6 @@
 		F077B94A22C3EE6500B55B03 /* CodingChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
-				F077B96222C44C7700B55B03 /* ArticleModelTests.swift */,
 				F077B94B22C3EE6500B55B03 /* CodingChallengeTests.swift */,
 				F077B94D22C3EE6500B55B03 /* Info.plist */,
 			);
@@ -232,6 +232,7 @@
 				F077B92C22C1DBE100B55B03 /* ArticlesFeedViewController.swift in Sources */,
 				F077B94422C2AC6C00B55B03 /* DetailViewController.swift in Sources */,
 				F077B92A22C1DBE100B55B03 /* AppDelegate.swift in Sources */,
+				F0D9229922C58ADA00F73050 /* Network.swift in Sources */,
 				F077B95E22C4472500B55B03 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,12 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F077B96422C44C7700B55B03 /* ArticleModelTests.swift in Sources */,
 				F077B94C22C3EE6500B55B03 /* CodingChallengeTests.swift in Sources */,
 				F077B95B22C4459C00B55B03 /* RedditPayload.swift in Sources */,
 				F077B95F22C4472500B55B03 /* Config.swift in Sources */,
 				F077B96022C448A200B55B03 /* DetailViewController.swift in Sources */,
-				F077B95C22C446A700B55B03 /* ArticlesFeedViewController.swift in Sources */,
+				F0D9229A22C58ADA00F73050 /* Network.swift in Sources */,
 				F077B95A22C4448600B55B03 /* Article.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -60,20 +60,21 @@ class ArticlesFeedViewController: UITableViewController {
             performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
             return
         }
-       
+
         if let data = try? Data(contentsOf: url) {
             parse(json: data)
         } else {
             // show error on the main thread
             performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
+        
     }
     
     func parse(json: Data) {
         let decoder = JSONDecoder()
-       
+
         guard let redditPayload = try? decoder.decode(RedditPayload.self, from: json) else { return }
-            
+        
         articles = Article.parseArticles(from: redditPayload)
         print("Parsed downloaded payload into \(articles.count) items: \n\(articles)")
         tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)

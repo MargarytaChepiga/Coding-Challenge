@@ -12,7 +12,7 @@
         <!--Articles Feed View Controller-->
         <scene sceneID="FYe-Kv-53z">
             <objects>
-                <tableViewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ReX-gB-ox6" customClass="ArticlesFeedViewController" customModule="CodingChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ArticlesFeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ReX-gB-ox6" customClass="ArticlesFeedViewController" customModule="CodingChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7N0-nx-1Ur">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
