@@ -18,9 +18,9 @@ class CodingChallengeTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
         // instantiate main view controller
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         viewController = (storyboard.instantiateViewController(withIdentifier: "ArticlesFeedViewController") as! ArticlesFeedViewController)
+        // trick to call loadView
         let _ = viewController?.view
     }
 
@@ -30,14 +30,14 @@ class CodingChallengeTests: XCTestCase {
         super.tearDown()
     }
     
-    func testIfTitleExist() {
+    func testTitle() {
         
         // Return true if view was successfully loaded
         XCTAssertNotNil(viewController?.title)
         
     }
 
-    func testIfArticlesDataIsEmpty() {
+    func testArticleData() {
         
         // make sure that once the view controller is
         // loaded the articles data is empty
@@ -45,10 +45,21 @@ class CodingChallengeTests: XCTestCase {
         
     }
 
-    func testFetchJSON() {
-        
+    func testFetchJson() {
+        let expectation = XCTestExpectation(description: "Download data from reddit")
         viewController?.fetchJSON()
         XCTAssertNotNil(viewController?.articles)
+        expectation.fulfill()
+        wait(for: [expectation], timeout: 10.0)
     }
-
+    
+    func testJSONFeed() {
+        let expectation = XCTestExpectation(description: "Download data from reddit")
+        XCTAssertEqual(viewController?.articles.count, 0, "no data should be present before we fetch")
+        viewController?.fetchJSON()
+        XCTAssertEqual(viewController?.articles.count, 27 , "asserting succesful download of data")
+        expectation.fulfill()
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
 }

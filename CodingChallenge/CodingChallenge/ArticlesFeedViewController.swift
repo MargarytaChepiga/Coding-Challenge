@@ -19,13 +19,14 @@ class ArticlesFeedViewController: UITableViewController {
         
         // fetch json on the background thread
         performSelector(inBackground: #selector(fetchJSON), with: nil)
-        
+       
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles.count
     }
     
+    // to fix the line under the image
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell.responds(to: #selector(setter: UITableViewCell.separatorInset)) {
             cell.separatorInset = UIEdgeInsets.zero
@@ -37,6 +38,7 @@ class ArticlesFeedViewController: UITableViewController {
             cell.layoutMargins = UIEdgeInsets.zero
         }
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         // resetting the image to avoid image appearance in cells that shoundn't
@@ -55,21 +57,22 @@ class ArticlesFeedViewController: UITableViewController {
     }
     
     @objc func fetchJSON() {
-        
+
         guard let url = URL(string: DATA_SOURCE) else {
             performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
             return
         }
 
         if let data = try? Data(contentsOf: url) {
+            print("Data: \(data)")
             parse(json: data)
         } else {
             // show error on the main thread
             performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
-        
+
     }
-    
+
     func parse(json: Data) {
         let decoder = JSONDecoder()
 
@@ -79,7 +82,7 @@ class ArticlesFeedViewController: UITableViewController {
         print("Parsed downloaded payload into \(articles.count) items: \n\(articles)")
         tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
     }
-    
+ 
     @objc func showError() {
         let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Ok", style: .cancel))
