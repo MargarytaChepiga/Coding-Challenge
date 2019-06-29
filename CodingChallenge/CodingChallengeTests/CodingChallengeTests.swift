@@ -12,39 +12,54 @@ import XCTest
 
 class CodingChallengeTests: XCTestCase {
 
-    var sut: ArticlesFeedViewController!
-    var vc: ArticlesFeedViewController!
+    var viewController: ArticlesFeedViewController?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ArticlesFeedViewController
+        // instantiate main view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        viewController = (storyboard.instantiateViewController(withIdentifier: "ArticlesFeedViewController") as! ArticlesFeedViewController)
+        // trick to call loadView
+        let _ = viewController?.view
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        sut = nil
-        vc = nil
+        viewController = nil
         super.tearDown()
     }
+    
+    func testTitle() {
+        
+        // Return true if view was successfully loaded
+        XCTAssertNotNil(viewController?.title)
+        
+    }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertEqual(vc?.articles.isEmpty, true, "articles should exist as an empty object")
-        XCTAssertEqual(vc?.articles.count, 0, "articles should be empty before we fetched any data")
+    func testArticleData() {
+        
+        // make sure that once the view controller is
+        // loaded the articles data is empty
+        XCTAssertEqual(viewController?.articles.isEmpty, true)
+        
+    }
 
+    func testFetchJson() {
+        let expectation = XCTestExpectation(description: "Download data from reddit")
+        viewController?.fetchJSON()
+        XCTAssertNotNil(viewController?.articles)
+        expectation.fulfill()
+        wait(for: [expectation], timeout: 10.0)
     }
     
-    func testFetchJSON() {
-        XCTAssertEqual(vc?.articles.count, 0, "articles should be empty before we fetched any data")
-        vc.fetchJSON()
-        XCTAssertEqual(vc?.articles.count, 27, "amount of articles should be 27")
+    func testJSONFeed() {
+        let expectation = XCTestExpectation(description: "Download data from reddit")
+        XCTAssertEqual(viewController?.articles.count, 0, "no data should be present before we fetch")
+        viewController?.fetchJSON()
+        XCTAssertEqual(viewController?.articles.count, 27 , "asserting succesful download of data")
+        expectation.fulfill()
+        wait(for: [expectation], timeout: 10.0)
     }
     
-   
-
-
 }
