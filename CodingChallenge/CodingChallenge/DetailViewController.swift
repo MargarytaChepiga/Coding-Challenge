@@ -24,12 +24,14 @@ class DetailViewController: UIViewController {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.systemFont(ofSize: 18)
+        titleLabel.accessibilityIdentifier = "Title"
         view.addSubview(titleLabel)
         
         textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .left
         textView.font = UIFont.systemFont(ofSize: 16)
+        textView.accessibilityIdentifier = "Content"
         view.addSubview(textView)
         
         NSLayoutConstraint.activate([

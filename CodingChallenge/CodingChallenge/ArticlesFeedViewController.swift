@@ -47,6 +47,7 @@ class ArticlesFeedViewController: UITableViewController {
        
         let article = articles[indexPath.row]
         cell.textLabel?.text = article.title
+        cell.textLabel?.accessibilityIdentifier = "tableView title"
         
         if let url = article.thumbnailUrl,
             let data = try? Data(contentsOf: url) {
