@@ -1,0 +1,25 @@
+workflows:
+  ios-workflow:
+    name: ios_workflow
+    environment:
+      vars:
+        XCODE_SCHEME: "CodingChallenge" # PUT THE NAME OF YOUR SCHEME HERE
+        # FCI_CERTIFICATE: Encrypted(...) # PUT THE ENCRYPTED DISTRIBUTION CERTIFICATE HERE
+        # FCI_CERTIFICATE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED CERTIFICATE PASSWORD HERE
+        # FCI_PROVISIONING_PROFILE: Encrypted(...) # PUT THE ENCRYPTED PROVISIONING PROFILE HERE
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: master
+          include: true
+          source: true
+    scripts:
+      - name: iOS test
+          script: |
+          xcode-project run-tests \
+            --scheme CodingChallenge \
+            --device "iPhone 11"
+    test_report: build/ios/test/*.xml
