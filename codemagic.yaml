@@ -21,4 +21,4 @@ workflows:
         script: xcode-project run-tests \
           --scheme CodingChallenge \
           --device "iPhone 11"
-    test_report: build/ios/test/*.xml
+        test_report: build/ios/test/*.xml
