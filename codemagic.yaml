@@ -18,7 +18,7 @@ workflows:
           source: true
     scripts:
       - name: iOS test
-          script: xcode-project run-tests \
-            --scheme CodingChallenge \
-            --device "iPhone 11"
+        script: xcode-project run-tests \
+          --scheme CodingChallenge \
+          --device "iPhone 11"
     test_report: build/ios/test/*.xml
