@@ -81,7 +81,10 @@ class ArticlesFeedViewController: UITableViewController {
         
         articles = Article.parseArticles(from: redditPayload)
         print("Parsed downloaded payload into \(articles.count) items: \n\(articles)")
-        tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        //tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
     }
  
     @objc func showError() {
