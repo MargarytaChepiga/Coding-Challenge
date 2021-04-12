@@ -8,6 +8,8 @@ workflows:
       - pwd
       - ls
       - cd CodingChallenge
-      - xcodebuild build -scheme "CodingChallenge" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+      - ls
+      - pwd
+      - xcodebuild build -project "CodingChallenge.xcodeproj" -scheme "CodingChallenge" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
     artifacts:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
