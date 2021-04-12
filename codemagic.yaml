@@ -6,6 +6,6 @@ workflows:
       cocoapods: default
     scripts:
       - xcodebuild build -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
-      - xcodebuild test-without-building -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge"
+      - xcodebuild test-without-building -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallengeTests"
     artifacts:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
