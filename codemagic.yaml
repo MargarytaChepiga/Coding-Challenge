@@ -2,7 +2,7 @@ workflows:
   ios-project: # workflow ID
     name: iOS project # workflow name
     environment:
-      xcode: 11.4
+      xcode: 11.4.1
       cocoapods: default
     scripts:
       - xcodebuild build -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
