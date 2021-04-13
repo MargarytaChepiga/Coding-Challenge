@@ -18,7 +18,7 @@ default_platform(:ios)
 platform :ios do
   desc "Test"
   lane :unit_tests do
-    run_tests(project: "CodingChallenge/CodingChallenge.xcodeproj",
+    run_tests(
       scheme: "CodingChallenge",
       device: "iPhone 11")
   end
