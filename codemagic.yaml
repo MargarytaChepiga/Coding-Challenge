@@ -8,7 +8,7 @@ workflows:
       #- xcodebuild build -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
       #- xcodebuild test -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge" -destination 'platform=iOS Simulator,id=0D402FC5-D9D5-4862-8643-05EECA069998'
       #- gem install bundler:1.17.2
-      - cd CodingChallenge && bundle exec fastlane unit_tests
+      - cd CodingChallenge && bundle install && bundle exec fastlane unit_tests
       # - bundle install
       #- bundle exec fastlane unit_tests
     artifacts:
