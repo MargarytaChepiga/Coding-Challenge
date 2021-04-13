@@ -7,6 +7,6 @@ workflows:
     scripts:
       #- xcodebuild build -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
       #- xcodebuild test-without-building -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge" -destination "platform=iOS Simulator,name=iPhone 11"
-      - xcodebuild test-without-building -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge" -destination "platform=iOS Simulator,id=0D402FC5-D9D5-4862-8643-05EECA069998”
+      - xcodebuild test-without-building -project "CodingChallenge/CodingChallenge.xcodeproj" -scheme "CodingChallenge" -destination 'platform=iOS Simulator,id=0D402FC5-D9D5-4862-8643-05EECA069998'
     artifacts:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
